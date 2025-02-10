@@ -1,0 +1,21 @@
+name: Test clé API secrète
+
+on: [push]  # Exécute ce workflow à chaque push
+
+jobs:
+  test_api_key:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code du repo
+        uses: actions/checkout@v3
+
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Afficher la clé API (exemple sécurisé)
+        run: |
+          echo "La clé API est cachée"
+          echo "API_KEY = ${{ secrets.API_KEY }}"  # On récupère le secret
